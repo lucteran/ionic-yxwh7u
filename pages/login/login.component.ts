@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {NgForm} from "@angular/forms";
-import {AlertController} from 'ionic-angular';
+import {AlertController, NavController} from 'ionic-angular';
+import { ListaComponent } from '../lista/lista.component';
 
 @Component({
   selector: 'app-login',
@@ -10,17 +11,19 @@ import {AlertController} from 'ionic-angular';
 })
 export class LoginComponent {
 
-  constructor(public afAuth: AngularFireAuth, public alertCtrl: AlertController) { 
+  constructor(public afAuth: AngularFireAuth, public alertCtrl: AlertController, public navCtrl: NavController) { 
 
   }
 
   public login(form: NgForm): void{
     
-    let email:string = form.value.email;
-    let senha:string = form.value.senha;
+    let email = form.value.email;
+    let senha = form.value.senha;
 
     this.afAuth.auth.signInWithEmailAndPassword(email, senha)
-    .then((user) => { })
+    .then((user) => { 
+      this.navCtrl.setRoot(ListaComponent);
+    })
     .catch((error) => { 
       this.showMessage(error.message);
     })
