@@ -21,9 +21,9 @@ export class LoginComponent {
     let senha = form.value.senha;
 
     this.afAuth.auth.signInWithEmailAndPassword(email, senha)
-    .then((user) => { 
+    /*.then((user) => { 
       this.navCtrl.setRoot(ListaComponent);
-    })
+    })*/
     .catch((error) => { 
       this.showMessage(error.message);
     })

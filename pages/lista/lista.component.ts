@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth} from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { NavController } from 'ionic-angular';
 import { CadastroComponent } from '../cadastro/cadastro.component';
@@ -12,7 +13,7 @@ export class ListaComponent {
   
   lista: Observable<any[]>;
   
-  constructor(public db: AngularFirestore, public navCtrl: NavController) {
+  constructor(public db: AngularFirestore, public navCtrl: NavController, public afAuth: AngularFireAuth) {
     this.lista = db.collection('tarefas').valueChanges();
   }
 
@@ -31,5 +32,10 @@ export class ListaComponent {
     else
       valor=true;
     this.db.collection('tarefas').doc(id).update({concluida: valor});
+  }
+
+  public sair():void{
+    this.afAuth.auth.signOut();
+    //this.navCtrl.setRoot(LoginComponent);
   }
 }
