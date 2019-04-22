@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Cadastro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (submit)="salvar(form)">
+
+    <ion-list>
+      
+      <ion-label stacked>Nome</ion-label>
+      <ion-input name="nome" type="text" ngModel></ion-input>
+
+    </ion-list>
+
+    <button ion-button block color="primary">Salvar</button>
+  </form>
+</ion-content>

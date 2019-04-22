@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Tarefas</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="adicionar()">
+        <ion-icon name="add" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let t of lista | async"> 
+       
+        <ion-item>
+          <ion-icon name="checkbox" item-end *ngIf="t.concluida"></ion-icon>
+          <h2>{{t.nome}}</h2>
+        </ion-item>
+       
+        <ion-item-options>
+          <button ion-button color="danger" (click)="apagar(t.id)">Apagar</button>
+          <button ion-button color="secondary" (click)="concluir(t.id, t.concluida)">Concluir</button>
+        </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
