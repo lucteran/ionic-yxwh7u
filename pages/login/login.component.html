@@ -1,5 +1,6 @@
 <ion-content>
   <form #form="ngForm" (submit)="login(form)">
+    
     <ion-list>
       
       <ion-item>
@@ -12,9 +13,10 @@
         <ion-input type="password" name="senha" ngModal></ion-input>
       </ion-item>
       
-      <button ion-button color="primary" block> Entrar</button>
-      <button ion-button outline color="primary"(click)="cadastrar()"  block>Cadastrar</button>
+      <button ion-button block color="primary">Entrar</button>
+      <button ion-button block (click)="cadastrar()" outline color="primary" type="button">Cadastrar</button>
 
     </ion-list>
+
   </form>
 </ion-content>

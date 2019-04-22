@@ -14,9 +14,10 @@ export class LoginComponent {
 
   }
 
-  public login(form:NgForm): void{
-    let email = form.value.email;
-    let senha = form.value.senha;
+  public login(form: NgForm): void{
+    
+    let email:string = form.value.email;
+    let senha:string = form.value.senha;
 
     this.afAuth.auth.signInWithEmailAndPassword(email, senha)
     .then((user) => { })
